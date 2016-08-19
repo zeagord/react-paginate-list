@@ -39,17 +39,18 @@ class Pagination extends Component {
 
 
   onPageClick(page){
+    let selectedOffset = this.state.selected;
     if (page === 'first') {
-      this.setState({selected: 1});
+      selectedOffset = 1;
       this.setState({activeLast: Math.ceil(this.props.totalElements/this.props.perPage) > this.props.visiblePages ? this.props.visiblePages : Math.ceil(this.props.totalElements/this.props.perPage)});
       this.setState({activeFirst: 1});
     } else if (page === 'last') {
-      this.setState({selected: this.state.totalPages});
+      selectedOffset = this.state.totalPages;
       this.setState({activeLast: this.state.totalPages});
       this.setState({activeFirst: this.state.totalPages-this.props.visiblePages});
     } else if (page === 'previous')   {
       if (this.state.selected !== 1) {
-        this.setState({selected: this.state.selected-1});
+        selectedOffset = selectedOffset - 1;
       }
         if(this.state.selected > this.props.visiblePages) {
           this.setState({activeLast: this.state.activeLast-1});
@@ -57,16 +58,17 @@ class Pagination extends Component {
         }
     } else if (page === 'next') {
       if (this.state.selected !== this.state.totalPages) {
-        this.setState({selected: this.state.selected+1});
+        selectedOffset = selectedOffset + 1;
       }
       if (this.state.activeLast !== this.state.totalPages) {
         this.setState({activeLast: this.state.activeLast+1});
         this.setState({activeFirst: this.state.activeFirst+1});
       }
     } else {
-      this.setState({selected: page});
+      selectedOffset = page;
     }
-    this.props.onSelect(this.state.selected);
+    this.setState({selected: selectedOffset});
+    this.props.onSelect(selectedOffset);
   }
   isActive(value){
     if(this.state.selected && value.split(" ")[0]===this.state.selected.toString() && this.state.selected > (this.props.visiblePages)) {
