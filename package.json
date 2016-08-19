@@ -1,0 +1,51 @@
+{
+  "name": "react-paginate-list",
+  "version": "0.0.3-alpha",
+  "description": "React Pagination",
+  "main": "lib/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prepublish": "npm run clean && npm run build",
+    "build": "npm run build:lib",
+    "build:lib": "babel src --out-dir lib",
+    "clean": "rimraf lib"
+  },
+  "directories": {
+    "lib": "lib/"
+  },
+  "author": "Raja Sundaram",
+  "license": "MIT",
+  "dependencies": {
+    "github": "^1.1.0",
+    "react": "^15.3.0",
+    "react-dom": "^15.3.0"
+  },
+  "devDependencies": {
+    "babel-core": "^6.13.2",
+    "babel-loader": "6.0.1",
+    "babel-preset-es2015": "6.9.0",
+    "babel-preset-react": "6.11.1",
+    "babel-preset-stage-0": "6.5.0",
+    "css-loader": "^0.23.1",
+    "node-sass": "^3.8.0",
+    "react-hot-loader": "^1.3.0",
+    "sass-loader": "^4.0.0",
+    "style-loader": "^0.13.1",
+    "webpack": "^1.13.1",
+    "webpack-dev-server": "^1.14.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:sundarsy/react-paginate-list.git"
+  },
+  "keywords": [
+    "react",
+    "react",
+    "pagination",
+    "pagination"
+  ],
+  "bugs": {
+    "url": "https://github.com:sundarsy/react-paginate-list/issues"
+  },
+  "homepage": "https://github.com:sundarsy/react-paginate-list#readme"
+}
