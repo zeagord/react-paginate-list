@@ -14,7 +14,14 @@ class Pagination extends Component {
       activeLast: Math.ceil(props.totalElements/props.perPage) > props.visiblePages ? props.visiblePages : Math.ceil(props.totalElements/props.perPage)
     }
   }
-
+  componentWillReceiveProps(nextProps){
+    this.setState({
+      selected: 1,
+      totalPages: Math.ceil(nextProps.totalElements/nextProps.perPage),
+      activeFirst: 1,
+      activeLast: Math.ceil(nextProps.totalElements/nextProps.perPage) > nextProps.visiblePages ? nextProps.visiblePages : Math.ceil(nextProps.totalElements/nextProps.perPage)
+    });
+  }
   getPages(){
     let pages = [];
     for (let i=1; i<=this.state.totalPages; i++) {
